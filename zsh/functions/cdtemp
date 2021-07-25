@@ -1,0 +1,6 @@
+# vim: filetype=zsh
+
+cdtemp() {
+  local dest="$(mktemp -d)"
+  cd $dest
+}
