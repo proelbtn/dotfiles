@@ -1,0 +1,47 @@
+# vi: filetype=zsh
+
+prompt_protheme_help() {
+  cat <<EOF
+The prompt for proelbtn.
+EOF
+}
+
+prompt_protheme_precmd() {
+  vcs_info
+}
+
+prompt_protheme_setup_vcs_info() {
+  autoload -Uz add_zsh_hook
+  autoload -Uz colors
+  autoload -Uz vcs_info
+
+  add-zsh-hook precmd prompt_protheme_precmd
+
+  zstyle ':vcs_info:*' enable git
+}
+
+prompt_protheme_setup() {
+  local p_date p_plat p_ver
+
+  prompt_opts=(cr percent subst)
+
+
+  p_date='[%D{%Y/%m/%d %R:%S %Z}]'
+  p_plat="[$(uname -p)/$(uname -s)/$(uname -r)]"
+  p_ver="[${ZSH_VERSION}]"
+  p_userpwd='<%b%n@%m:%B%~%b>'
+  p_prompt='%# '
+
+  p_vcs='%B%U${vcs_info_msg_0_}%u%b'
+
+  PROMPT="$p_date$p_plat$p_ver
+$p_userpwd
+$p_prompt"
+  RPROMPT="$p_vcs"
+
+  zle_highlight=(default:fg=white, isearch:fg=red,bold,underline)
+
+  prompt_protheme_setup_vcs_info
+}
+
+prompt_protheme_setup "$@"

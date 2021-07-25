@@ -1,5 +1,8 @@
 #!/usr/bin/zsh
 
+typeset -U PATH
+typeset -U FPATH
+
 ZSH_ROOT="$(dirname $(readlink ~/.zshrc))"
 
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:-${HOME}/.cache}"
@@ -14,9 +17,21 @@ export SAVEHIST=262144
 
 export FPATH="${FPATH}:${ZSH_ROOT}/functions"
 
+source "${XDG_DATA_HOME}/zinit/zinit.zsh"
+
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light mafredri/zsh-async
+
+stty -ixon -ixoff
+
 autoload -Uz cdtemp
 autoload -Uz promptinit
-autoload -Uz reload
 
 promptinit
-prompt walters
+prompt protheme
+
+alias reload="exec ${SHELL}"
+
+[ -f "~/.zshrc.local" ] && source ~/.zshrc.local
