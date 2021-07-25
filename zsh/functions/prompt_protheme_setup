@@ -21,21 +21,31 @@ prompt_protheme_setup_vcs_info() {
 }
 
 prompt_protheme_setup() {
-  local p_date p_plat p_ver
+  local p_date p_plat p_ver p_user p_cwd p_usercwd p_prompt p_vcs
 
   prompt_opts=(cr percent subst)
 
+  p_date='%F{yellow}[%F{cyan}%D{%Y/%m/%d %R:%S %Z}%f%F{yellow}]%f'
+  p_plat="%F{yellow}[%F{cyan}$(uname -p)/$(uname -s)/$(uname -r)%F{yellow}]%f"
+  p_ver="%F{yellow}[%F{cyan}${ZSH_VERSION}%F{yellow}]%f"
 
-  p_date='[%D{%Y/%m/%d %R:%S %Z}]'
-  p_plat="[$(uname -p)/$(uname -s)/$(uname -r)]"
-  p_ver="[${ZSH_VERSION}]"
-  p_userpwd='<%b%n@%m:%B%~%b>'
+  if [[ "$(id -un)" = "root" ]]; then
+    p_user='%F{red}%n@%m%f'
+  elif [[ ${+SSH_CONNECTION} -eq 1 ]]; then
+    p_user='%F{blue}%n@%m%f'
+  else
+    p_user='%F{green}%n@%m%f'
+  fi
+
+  p_cwd='%F{yellow}%~%f'
+  p_usercwd="%F{yellow}<%f$p_user:$p_cwd%F{yellow}>%f"
+
   p_prompt='%# '
 
   p_vcs='%B%U${vcs_info_msg_0_}%u%b'
 
   PROMPT="$p_date$p_plat$p_ver
-$p_userpwd
+$p_usercwd
 $p_prompt"
   RPROMPT="$p_vcs"
 

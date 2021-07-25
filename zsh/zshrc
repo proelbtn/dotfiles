@@ -5,12 +5,6 @@ typeset -U FPATH
 
 ZSH_ROOT="$(dirname $(readlink ~/.zshrc))"
 
-export XDG_CACHE_HOME="${XDG_CACHE_HOME:-${HOME}/.cache}"
-export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
-export XDG_CONFIG_DIRS="${XDG_CONFIG_DIRS:-/etc/xdg}"
-export XDG_DATA_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}"
-export XDG_DATA_DIRS="${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
-
 export HISTFILE=~/.zsh_history
 export HISTSIZE=262144
 export SAVEHIST=262144
@@ -19,19 +13,47 @@ export FPATH="${FPATH}:${ZSH_ROOT}/functions"
 
 source "${XDG_DATA_HOME}/zinit/zinit.zsh"
 
+zinit light mafredri/zsh-async
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-syntax-highlighting
-zinit light mafredri/zsh-async
+
 
 stty -ixon -ixoff
 
 autoload -Uz cdtemp
+autoload -Uz compinit
 autoload -Uz promptinit
 
 promptinit
 prompt protheme
 
+compinit
+zstyle ':completion:*' completer _complete _match _approximate
+zstyle ':completion:*:match:*' original only
+zstyle ':completion:*:approximate:*' max-errors 2 numeric
+zstyle ':completion:*:functions' ignored-patterns '_*'
+
+# aliases
+
+alias ls="ls -G"
 alias reload="exec ${SHELL}"
+alias -g foreach="xargs -n 1 -I {}"
+
+# bindkeys
+
+bindkey -e
+bindkey -r "^b"; bindkey "^b" backward-word
+bindkey -r "^f"; bindkey "^f" forward-word
+
+# binary packages
+
+zinit ice as:"program" from:"gh-r" ver:"0.27.2" pick:"fzf"
+zinit light junegunn/fzf
+
+zinit ice as:"program" from:"gh-r" ver:"jq-1.6" cp:"jq-osx-amd64 -> jq" pick:"jq"
+zinit light stedolan/jq
 
 [ -f "~/.zshrc.local" ] && source ~/.zshrc.local
+
+which zprof >/dev/null 2>/dev/null && zprof
