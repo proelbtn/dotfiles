@@ -94,7 +94,7 @@ if [[ ${+SSH_AUTH_SOCK} -eq 1 ]]; then
 fi
 
 
-if [ -f "~/.zshrc.local" ]; then
+if [ -f "${HOME}/.zshrc.local" ]; then
   source ~/.zshrc.local
 fi
 
