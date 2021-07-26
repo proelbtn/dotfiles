@@ -30,6 +30,7 @@ cd $(dirname $0)/..
 
 
 # zsh
+[ ! -d "~/.config/zinit" ] && git clone https://github.com/zdharma/zinit.git ~/.config/zinit || true
 symlink ./zsh/zshenv ~/.zshenv
 symlink ./zsh/zshrc ~/.zshrc
 
