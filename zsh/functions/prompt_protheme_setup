@@ -37,7 +37,21 @@ prompt_protheme_setup_vcs_info() {
 }
 
 prompt_protheme_setup() {
-  local p_date p_plat p_ver p_user p_cwd p_usercwd p_prompt p_vcs
+  local f_git f_k8s
+  local p_date p_plat p_ver p_user p_cwd p_usercwd p_status p_prompt p_vcs
+
+  while [ $# -ne 0 ]; do
+    case $1 in
+    git)
+      f_git=1 
+      ;;
+    k8s|kubernetes)
+      f_k8s=1
+      ;;
+    esac
+    echo $1
+    shift
+  done
 
   prompt_opts=(cr percent subst)
 
@@ -55,14 +69,14 @@ prompt_protheme_setup() {
 
   p_cwd='%F{yellow}%~%f'
   p_usercwd="%F{yellow}<%f$p_user:$p_cwd%F{yellow}>%f"
-
+  p_status='%(?..%B%F{red}[%?]%f%b )'
   p_prompt='%# '
 
   p_vcs='%B%U${vcs_info_msg_0_}%u%b'
 
   PROMPT="$p_date$p_plat$p_ver
 $p_usercwd
-$p_prompt"
+$p_status$p_prompt"
   RPROMPT="$p_vcs"
 
   zle_highlight=(default:fg=white, isearch:fg=red,bold,underline)

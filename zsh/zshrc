@@ -25,8 +25,7 @@ source "${XDG_DATA_HOME}/zinit/zinit.zsh"
 zinit light mafredri/zsh-async
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-syntax-highlighting
-
+zinit light zdharma/fast-syntax-highlighting
 
 stty -ixon -ixoff
 
@@ -38,17 +37,30 @@ promptinit
 prompt protheme
 
 compinit
-zstyle ':completion:*' completer _complete _match _approximate
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
+# zstyle ':completion:*:messages' format '%d'
+# zstyle ':completion:*:warning' format 'No matches for: %d'
+
+zstyle ':completion:*:manuals' separate-sections true
+zstyle ':completion:*:descriptions' format '%F{yellow}%B%d%b%f'
+zstyle ':completion:*:corrections' format '%F{yellow}%B%d %{red}(errors: %e)%f%b'
+zstyle ':completion:*:options' description yes
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*:default' menu select=2
 zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 2 numeric
 zstyle ':completion:*:functions' ignored-patterns '_*'
 
 setopt correct
+setopt hist_ignore_dups
+setopt extended_history
+
 
 # aliases
 
 alias ls="ls -G"
-alias reload="exec ${SHELL}"
+alias reload="exec zsh"
 alias -g foreach="xargs -n 1 -I {}"
 
 # bindkeys
@@ -67,6 +79,26 @@ zinit light junegunn/fzf
 zinit ice as:"program" from:"gh-r" ver:"jq-1.6" cp:"jq-osx-amd64 -> jq" pick:"jq"
 zinit light stedolan/jq
 
-[ -f "~/.zshrc.local" ] && source ~/.zshrc.local
+#
 
-which zprof >/dev/null 2>/dev/null && zprof
+
+# automatically add private key to ssh-agent
+if [[ ${+SSH_AUTH_SOCK} -eq 1 ]]; then
+  if [[ -d ~/.ssh ]]; then
+    for f in $(find ~/.ssh -type f); do
+      if file $f | grep "OpenSSH private key" >/dev/null; then
+        ssh-add $f 2>/dev/null
+      fi
+    done
+  fi
+fi
+
+
+if [ -f "~/.zshrc.local" ]; then
+  source ~/.zshrc.local
+fi
+
+if which zprof >/dev/null 2>/dev/null; then
+  zprof
+fi
+

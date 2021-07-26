@@ -35,8 +35,12 @@ symlink ./zsh/zshrc ~/.zshrc
 
 
 # brew
+silent which asciinema || brew install asciinema
 silent which ipcalc || brew install ipcalc 
 silent which hub || brew install hub
+silent which mtr || brew install mtr
+silent which nmap || brew install nmap
 silent which nvim || brew install neovim
 silent which tig || brew install tig
+silent which terminal-notifier || brew install terminal-notifier
 silent which wireshark || brew install --cask wireshark
