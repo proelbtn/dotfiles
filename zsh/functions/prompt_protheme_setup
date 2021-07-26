@@ -6,15 +6,31 @@ The prompt for proelbtn.
 EOF
 }
 
-prompt_protheme_precmd() {
+prompt_protheme_async_callback() {
+  vcs_info_msg_0_=$3
+  zle reset-prompt
+}
+
+prompt_protheme_async_precmd() {
+  cd -q $1
   vcs_info
+  print ${vcs_info_msg_0_}
+}
+
+prompt_protheme_precmd() {
+  async_flush_jobs vcs_info
+  async_job vcs_info prompt_protheme_async_precmd $PWD
 }
 
 prompt_protheme_setup_vcs_info() {
   autoload -Uz add_zsh_hook
+  autoload -Uz async
   autoload -Uz colors
   autoload -Uz vcs_info
 
+  async_init
+  async_start_worker vcs_info
+  async_register_callback vcs_info prompt_protheme_async_callback
   add-zsh-hook precmd prompt_protheme_precmd
 
   zstyle ':vcs_info:*' enable git

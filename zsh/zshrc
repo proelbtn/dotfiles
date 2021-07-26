@@ -1,5 +1,10 @@
 #!/usr/bin/zsh
 
+silent() {
+  $@ >/dev/null 2>/dev/null
+  return $?
+}
+
 typeset -U PATH
 typeset -U FPATH
 
@@ -10,6 +15,10 @@ export HISTSIZE=262144
 export SAVEHIST=262144
 
 export FPATH="${FPATH}:${ZSH_ROOT}/functions"
+
+[ ${+EDITOR} -ne 1 ] && silent which nvim && export EDITOR="nvim"
+[ ${+EDITOR} -ne 1 ] && silent which vim && export EDITOR="vim"
+[ ${+EDITOR} -ne 1 ] && silent which vi && export EDITOR="vi"
 
 source "${XDG_DATA_HOME}/zinit/zinit.zsh"
 
@@ -34,6 +43,8 @@ zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 2 numeric
 zstyle ':completion:*:functions' ignored-patterns '_*'
 
+setopt correct
+
 # aliases
 
 alias ls="ls -G"
@@ -45,6 +56,8 @@ alias -g foreach="xargs -n 1 -I {}"
 bindkey -e
 bindkey -r "^b"; bindkey "^b" backward-word
 bindkey -r "^f"; bindkey "^f" forward-word
+bindkey -r "^[[A"; bindkey "^[[A" up-line-or-search
+bindkey -r "^[[B"; bindkey "^[[B" down-line-or-search
 
 # binary packages
 
