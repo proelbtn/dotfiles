@@ -22,7 +22,7 @@ symlink() {
   local src=$(expand $1)
   local dst=$(expand $2)
 
-  printf "[link] ${dst} -> ${src}\n" 
+  printf "[link] ${dst} -> ${src}\n"
   ln -sf "${src}" "${dst}"
 }
 
