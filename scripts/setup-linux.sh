@@ -1,5 +1,11 @@
 #!/bin/bash
 
+export XDG_CACHE_HOME="${XDG_CACHE_HOME:-${HOME}/.cache}"
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
+export XDG_CONFIG_DIRS="${XDG_CONFIG_DIRS:-/etc/xdg}"
+export XDG_DATA_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}"
+export XDG_DATA_DIRS="${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
+
 silent() {
   $@ >/dev/null 2>/dev/null
   return $?
@@ -30,7 +36,7 @@ cd $(dirname $0)/..
 
 
 # zsh
-[ ! -d "~/.config/zinit" ] && git clone https://github.com/zdharma/zinit.git ~/.config/zinit || true
+[ ! -d "${XDG_DATA_HOME}/zinit" ] && git clone https://github.com/zdharma/zinit.git "${XDG_DATA_HOME}/zinit" || true
 symlink ./zsh/zshenv ~/.zshenv
 symlink ./zsh/zshrc ~/.zshrc
 
