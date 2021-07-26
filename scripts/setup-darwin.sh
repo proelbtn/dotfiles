@@ -35,6 +35,7 @@ symlink ./zsh/zshrc ~/.zshrc
 
 
 # brew
+silent which ipcalc || brew install ipcalc 
 silent which hub || brew install hub
 silent which nvim || brew install neovim
 silent which tig || brew install tig
