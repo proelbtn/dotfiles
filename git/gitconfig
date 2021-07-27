@@ -1,0 +1,12 @@
+# vim: ft=gitconfig
+
+[user]
+  email = contact@proelbtn.com
+  name = proelbtn
+  signingkey = 98B064149B379656
+
+[help]
+  autocorrect = 1
+
+[color]
+  ui = true

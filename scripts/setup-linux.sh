@@ -40,3 +40,7 @@ cd $(dirname $0)/..
 symlink ./zsh/zshenv ~/.zshenv
 symlink ./zsh/zshrc ~/.zshrc
 
+
+# git
+symlink ./git/gitconfig ~/.gitconfig
+
