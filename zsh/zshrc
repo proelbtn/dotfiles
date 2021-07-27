@@ -85,8 +85,16 @@ bindkey -r "^[[B"; bindkey "^[[B" down-line-or-search
 zinit ice as:"program" from:"gh-r" ver:"0.27.2" pick:"fzf"
 zinit light junegunn/fzf
 
-zinit ice as:"program" from:"gh-r" ver:"jq-1.6" cp:"jq-osx-amd64 -> jq" pick:"jq"
-zinit light stedolan/jq
+case "$(uname -s)" in
+  Darwin)
+    zinit ice as:"program" from:"gh-r" ver:"jq-1.6" cp:"jq-osx-amd64 -> jq" pick:"jq"
+    zinit light stedolan/jq
+    ;;
+  Linux)
+    zinit ice as:"program" from:"gh-r" ver:"jq-1.6" cp:"jq-linux64 -> jq" pick:"jq"
+    zinit light stedolan/jq
+    ;;
+esac
 
 #
 
