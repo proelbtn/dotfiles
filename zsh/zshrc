@@ -59,9 +59,18 @@ setopt extended_history
 
 # aliases
 
-alias ls="ls -G"
 alias reload="exec zsh"
 alias -g foreach="xargs -n 1 -I {}"
+
+case "$(uname -s)" in
+  Darwin)
+    alias ls="ls -G"
+    ;;
+  Linux)
+    alias ls="ls --color"
+    ;;
+esac
+
 
 # bindkeys
 
