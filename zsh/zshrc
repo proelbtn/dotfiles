@@ -96,20 +96,6 @@ case "$(uname -s)" in
     ;;
 esac
 
-#
-
-
-# automatically add private key to ssh-agent
-if [[ ${+SSH_AUTH_SOCK} -eq 1 ]]; then
-  if [[ -d ~/.ssh ]]; then
-    for f in $(find ~/.ssh -type f); do
-      if file $f | grep "OpenSSH private key" >/dev/null; then
-        ssh-add $f 2>/dev/null
-      fi
-    done
-  fi
-fi
-
 
 if [ -f "${HOME}/.zshrc.local" ]; then
   source ~/.zshrc.local
