@@ -1,5 +1,8 @@
 # vim: ft=gitconfig
 
+[core]
+  fsmonitor = true
+
 [user]
   email = contact@proelbtn.com
   name = Ryoga Saito
@@ -7,6 +10,14 @@
 
 [help]
   autocorrect = 1
+
+[rebase]
+  autoStash = true
+  abbreviateCommands = true
+
+[status]
+  short = true
+  branch = true
 
 [color]
   ui = true
