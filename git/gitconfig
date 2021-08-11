@@ -2,7 +2,7 @@
 
 [user]
   email = contact@proelbtn.com
-  name = proelbtn
+  name = Ryoga Saito
   signingkey = 98B064149B379656
 
 [help]
@@ -10,3 +10,42 @@
 
 [color]
   ui = true
+
+[pager]
+  diff = delta
+  log = delta
+  reflog = delta
+  show = delta
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  features = protheme
+  side-by-side = true
+  relative-paths = true
+
+[delta "protheme"]
+  syntax-theme = argonaut
+  dark = true
+  navigate = true
+  file-added-label = [C]
+  file-modified-label = [U]
+  file-removed-label = [D]
+  file-renamed-label = [M]
+  file-style = yellow bold
+  file-decoration-style = yellow bold ul
+
+  line-numbers = true
+  line-numbers-left-format = " {nm:>1}│ "
+  line-numbers-left-style = black bold
+  line-numbers-right-format = " {np:>1}│ "
+  line-numbers-right-style = black bold
+  line-numbers-minus-style = red bold
+  line-numbers-plus-style = green bold
+  line-numbers-zero-style = black bold
+  hunk-header-decoration-style = yellow bold ul
+  hunk-header-style = white bold file
+  hunk-header-file-style = yellow bold
+  hunk-header-line-number-style = yellow bold
+  whitespace-error-style = red red

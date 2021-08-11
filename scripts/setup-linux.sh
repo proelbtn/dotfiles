@@ -36,7 +36,9 @@ cd $(dirname $0)/..
 
 
 # zsh
-[ ! -d "${XDG_DATA_HOME}/zinit" ] && git clone https://github.com/zdharma/zinit.git "${XDG_DATA_HOME}/zinit" || true
+[ ! -d "${XDG_DATA_HOME}/zinit" ] \
+  && git clone https://github.com/zdharma/zinit.git "${XDG_DATA_HOME}/zinit" \
+  || true
 symlink ./zsh/zshenv ~/.zshenv
 symlink ./zsh/zshrc ~/.zshrc
 
@@ -44,3 +46,10 @@ symlink ./zsh/zshrc ~/.zshrc
 # git
 symlink ./git/gitconfig ~/.gitconfig
 
+
+# rust
+[ ! -d "${HOME}/.cargo" ] \
+  && curl https://sh.rustup.rs -sSf | sh -s -- -y \
+  || true
+. "${HOME}/.cargo/env"
+silent which delta || cargo install git-delta
