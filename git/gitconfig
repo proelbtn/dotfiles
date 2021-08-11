@@ -41,9 +41,9 @@
   dark = true
   navigate = true
   file-added-label = [C]
-  file-modified-label = [U]
+  file-modified-label = [M]
   file-removed-label = [D]
-  file-renamed-label = [M]
+  file-renamed-label = [-]
   file-style = yellow bold
   file-decoration-style = yellow bold ul
 
