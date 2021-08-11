@@ -45,7 +45,7 @@
   line-numbers-plus-style = green bold
   line-numbers-zero-style = black bold
   hunk-header-decoration-style = yellow bold ul
-  hunk-header-style = white bold file
+  hunk-header-style = white bold file line-number
   hunk-header-file-style = yellow bold
   hunk-header-line-number-style = yellow bold
   whitespace-error-style = red red
