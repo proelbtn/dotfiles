@@ -8,12 +8,13 @@ silent() {
 typeset -U PATH
 typeset -U FPATH
 
-ZSH_ROOT="$(dirname $(readlink ~/.zshrc))"
+export ZSH_ROOT="$(dirname $(readlink ~/.zshrc))"
 
 export HISTFILE=~/.zsh_history
 export HISTSIZE=262144
 export SAVEHIST=262144
 
+export PATH="${PATH}:${ZSH_ROOT}/bin"
 export FPATH="${FPATH}:${ZSH_ROOT}/functions"
 
 [ ${+EDITOR} -ne 1 ] && silent which nvim && export EDITOR="nvim"
@@ -97,9 +98,18 @@ case "$(uname -s)" in
 esac
 
 
-if [ -f "${HOME}/.zshrc.local" ]; then
-  source ~/.zshrc.local
-fi
+# external script loading
+
+load_external_script() {
+  local script=$1
+  if [ -f "$script" ]; then
+    source "$script"
+  fi
+
+}
+
+load_external_script "${HOME}/.zshrc.local"
+load_external_script "${ZSH_ROOT}/iterm2.zsh"
 
 if which zprof >/dev/null 2>/dev/null; then
   zprof
