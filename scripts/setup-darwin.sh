@@ -39,6 +39,11 @@ symlink ./zsh/env.zsh ~/.zshenv
 symlink ./zsh/rc.zsh ~/.zshrc
 
 
+# rust
+[ ! -d "${HOME}/.cargo" ] && curl https://sh.rustup.rs -sSf | sh -s -- -y || true
+. "${HOME}/.cargo/env"
+
+
 # brew
 silent which asciinema || brew install asciinema
 silent which ipcalc || brew install ipcalc 
@@ -51,9 +56,10 @@ silent which terminal-notifier || brew install terminal-notifier
 silent which wireshark || brew install --cask wireshark
 
 
-# rust
-[ ! -d "${HOME}/.cargo" ] \
-  && curl https://sh.rustup.rs -sSf | sh -s -- -y \
-  || true
-. "${HOME}/.cargo/env"
+# cargo
 silent which delta || cargo install git-delta
+silent which exa || cargo install exa
+silent which bat || cargo install bat
+silent which hexyl || cargo install hexyl
+silent which fd || cargo install fd
+silent which rg || cargo install ripgrep

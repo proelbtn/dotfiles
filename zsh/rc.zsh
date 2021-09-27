@@ -62,6 +62,10 @@ setopt extended_history
 
 alias reload="exec zsh"
 alias -g foreach="xargs -n 1 -I {}"
+alias ls="exa"
+alias cat="bat"
+alias od="hexyl"
+alias find="fd"
 
 case "$(uname -s)" in
   Darwin)

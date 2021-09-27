@@ -48,8 +48,13 @@ symlink ./git/gitconfig ~/.gitconfig
 
 
 # rust
-[ ! -d "${HOME}/.cargo" ] \
-  && curl https://sh.rustup.rs -sSf | sh -s -- -y \
-  || true
+[ ! -d "${HOME}/.cargo" ] && curl https://sh.rustup.rs -sSf | sh -s -- -y || true
 . "${HOME}/.cargo/env"
+
+# cargo
 silent which delta || cargo install git-delta
+silent which exa || cargo install exa
+silent which bat || cargo install bat
+silent which hexyl || cargo install hexyl
+silent which fd || cargo install fd
+silent which rg || cargo install ripgrep
