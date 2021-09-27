@@ -6,4 +6,5 @@ export XDG_CONFIG_DIRS="${XDG_CONFIG_DIRS:-/etc/xdg}"
 export XDG_DATA_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}"
 export XDG_DATA_DIRS="${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
 
-source "$HOME/.cargo/env"
+export GOPATH="${XDG_DATA_HOME}/go"
+export PATH="${PATH}:${GOPATH}/bin"
