@@ -8,6 +8,14 @@
 [help]
   autocorrect = 1
 
+[alias]
+  a = add
+  c = commit
+  d = diff
+  l = log
+  s = status
+  r = rebase
+
 [rebase]
   autoStash = true
   abbreviateCommands = true
