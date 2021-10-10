@@ -30,9 +30,9 @@ zinit light zdharma/fast-syntax-highlighting
 
 stty -ixon -ixoff
 
-autoload -Uz cdtemp
 autoload -Uz compinit
 autoload -Uz promptinit
+autoload -Uz cdtemp
 
 promptinit
 prompt protheme
@@ -118,4 +118,3 @@ load_external_script "${ZSH_ROOT}/iterm2.zsh"
 if which zprof >/dev/null 2>/dev/null; then
   zprof
 fi
-
