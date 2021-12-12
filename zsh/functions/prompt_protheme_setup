@@ -36,9 +36,25 @@ prompt_protheme_setup_vcs_info() {
   zstyle ':vcs_info:*' enable git
 }
 
+prompt_protheme_check_newline() {
+  local curpos
+
+  echo -en "\e[6n"
+  read -s -d R curpos
+  curpos=${curpos#*;}
+
+  p_newline=""
+  if [ "${curpos}" != "1" ]; then
+    echo -e "\e[1;47;30m%\e[0m"
+  fi
+}
+
 prompt_protheme_setup() {
   local f_git f_k8s
   local p_date p_plat p_ver p_user p_cwd p_usercwd p_status p_prompt p_vcs
+
+  autoload -Uz add_zsh_hook
+  add-zsh-hook precmd prompt_protheme_check_newline
 
   while [ $# -ne 0 ]; do
     case $1 in
@@ -74,7 +90,7 @@ prompt_protheme_setup() {
 
   p_vcs='%B%U${vcs_info_msg_0_}%u%b'
 
-  PROMPT="$p_date$p_plat$p_ver
+  PROMPT="\$p_newline$p_date$p_plat$p_ver
 $p_usercwd
 $p_status$p_prompt"
   RPROMPT="$p_vcs"
