@@ -1,9 +1,20 @@
 #!/usr/bin/zsh
 
+# ==============================================================================
+
 silent() {
   $@ >/dev/null 2>/dev/null
   return $?
 }
+
+load_script() {
+  local script=$1
+  if [ -f "$script" ]; then
+    source "$script"
+  fi
+}
+
+# ==============================================================================
 
 typeset -U PATH
 typeset -U FPATH
@@ -17,11 +28,11 @@ export SAVEHIST=262144
 export PATH="${PATH}:${ZSH_ROOT}/bin"
 export FPATH="${FPATH}:${ZSH_ROOT}/functions"
 
-[ ${+EDITOR} -ne 1 ] && silent which nvim && export EDITOR="nvim"
-[ ${+EDITOR} -ne 1 ] && silent which vim && export EDITOR="vim"
-[ ${+EDITOR} -ne 1 ] && silent which vi && export EDITOR="vi"
+silent which nvim && export EDITOR="${EDITOR:-nvim}"
+silent which vim && export EDITOR="${EDITOR:-vim}"
+silent which vi && export EDITOR="${EDITOR:-vi}"
 
-source "${XDG_DATA_HOME}/zinit/zinit.zsh"
+load_script "${XDG_DATA_HOME}/zinit/zinit.zsh"
 
 zinit light mafredri/zsh-async
 zinit light zsh-users/zsh-autosuggestions
@@ -36,6 +47,32 @@ autoload -Uz cdtemp
 
 promptinit
 prompt protheme
+
+# ==============================================================================
+
+# Options
+# For more information: https://zsh.sourceforge.io/Doc/Release/Options.html
+
+## 16.2.4 History
+setopt extended_history
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt hist_reduce_blanks
+
+## 16.2.6 Input/Output
+setopt correct
+setopt interactive_comments
+unsetopt rm_star_silent
+setopt short_loops
+
+## 16.2.7 Job Control
+setopt check_jobs
+
+## 16.2.8 Prompting
+setopt prompt_cr
+setopt prompt_sp
+
+# ==============================================================================
 
 compinit
 zstyle ':completion:*' verbose yes
@@ -53,19 +90,15 @@ zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 2 numeric
 zstyle ':completion:*:functions' ignored-patterns '_*'
 
-setopt correct
-setopt hist_ignore_dups
-setopt extended_history
-
 
 # aliases
 
 alias reload="exec zsh"
-alias -g foreach="xargs -n 1 -I {}"
-alias ls="exa"
-alias cat="bat"
-alias od="hexyl"
-alias find="fd"
+alias -g foreach="xargs -I {}"
+silent which exa && alias ls="exa"
+silent which bat && alias cat="bat"
+silent which hexyl && alias od="hexyl"
+silent which fd && alias find="fd"
 
 case "$(uname -s)" in
   Darwin)
@@ -104,16 +137,8 @@ esac
 
 # external script loading
 
-load_external_script() {
-  local script=$1
-  if [ -f "$script" ]; then
-    source "$script"
-  fi
-
-}
-
-load_external_script "${HOME}/.zshrc.local"
-load_external_script "${ZSH_ROOT}/iterm2.zsh"
+load_script "${HOME}/.zshrc.local"
+load_script "${ZSH_ROOT}/iterm2.zsh"
 
 if which zprof >/dev/null 2>/dev/null; then
   zprof
