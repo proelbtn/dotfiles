@@ -31,12 +31,12 @@ prompt_protheme_setup() {
   add-zsh-hook precmd prompt_protheme_precmd
 
   zstyle ':vcs_info:*' enable git
-  zstyle ':vcs_info:*' formats "%F{green}[%b]%f"
-  zstyle ':vcs_info:*' actionformats '%F{green}[%b|%a]%f'
+  zstyle ':vcs_info:*' formats "%F{white}[%b]%f"
+  zstyle ':vcs_info:*' actionformats '%F{white}[%b|%a]%f'
 
   PROMPT='%F{yellow}[$(prompt_protheme_flag)]%f %F{cyan}%~%f
 %F{red}%(?..[%?] )%f%n@%U%m%u %# '
-  RPROMPT='${vcs_info_msg_0_}'
+  RPROMPT='%B%U${vcs_info_msg_0_}%b%u'
 }
 
 prompt_protheme_setup "$@"
