@@ -35,7 +35,7 @@ prompt_protheme_setup() {
   zstyle ':vcs_info:*' actionformats '%F{green}[%b|%a]%f'
 
   PROMPT='%F{yellow}[$(prompt_protheme_flag)]%f %F{cyan}%~%f
-%B%(?..[%?] )%b%n@%U%m%u %# '
+%F{red}%(?..[%?] )%f%n@%U%m%u %# '
   RPROMPT='${vcs_info_msg_0_}'
 }
 
