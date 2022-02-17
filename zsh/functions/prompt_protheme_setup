@@ -10,13 +10,27 @@ This prompt was based from walters theme.
 EOF
 }
 
+prompt_protheme_precmd() {
+  echo start
+  vcs_info
+  echo stop
+}
+
 prompt_protheme_setup() {
-  setopt prompt_subst
+  autoload -Uz ddd_zsh_hook
+  autoload -Uz vcs_info
+
+  prompt_opts=(percent subst)
+
+  add-zsh-hook precmd prompt_protheme_precmd
+
+  zstyle ':vcs_info:*' enable git
+  zstyle ':vcs_info:*' formats "%F{green}[%b]%f"
+  zstyle ':vcs_info:*' actionformats '%F{green}[%b|%a]%f'
 
   PROMPT="%F{blue}%~%f
 %B%(?..[%?] )%b%n@%U%m%u> "
-
-  prompt_opts=(cr percent)
+  RPROMPT='${vcs_info_msg_0_}'
 }
 
 prompt_protheme_setup "$@"
