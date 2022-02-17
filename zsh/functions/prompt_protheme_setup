@@ -11,9 +11,15 @@ EOF
 }
 
 prompt_protheme_precmd() {
-  echo start
   vcs_info
-  echo stop
+}
+
+prompt_protheme_flag() {
+  # Privileged
+  [[ "${USER}" = "root" ]] && echo -n P || echo -n U
+
+  # Remote connection
+  [[ "${SSH_CONNECTION}" != "" ]] && echo -n R || echo -n L
 }
 
 prompt_protheme_setup() {
@@ -28,8 +34,8 @@ prompt_protheme_setup() {
   zstyle ':vcs_info:*' formats "%F{green}[%b]%f"
   zstyle ':vcs_info:*' actionformats '%F{green}[%b|%a]%f'
 
-  PROMPT="%F{blue}%~%f
-%B%(?..[%?] )%b%n@%U%m%u> "
+  PROMPT='%F{yellow}[$(prompt_protheme_flag)]%f %F{cyan}%~%f
+%B%(?..[%?] )%b%n@%U%m%u %# '
   RPROMPT='${vcs_info_msg_0_}'
 }
 
