@@ -34,7 +34,7 @@ cd $(dirname $0)/..
 
 
 # zsh
-[ ! -d "${XDG_DATA_HOME}/zinit" ] && git clone https://github.com/zdharma/zinit.git "${XDG_DATA_HOME}/zinit" || true
+[ ! -d "${XDG_DATA_HOME}/zinit" ] && git clone https://github.com/zdharma-continuum/zinit.git "${XDG_DATA_HOME}/zinit" || true
 symlink ./zsh/env.zsh ~/.zshenv
 symlink ./zsh/rc.zsh ~/.zshrc
 
