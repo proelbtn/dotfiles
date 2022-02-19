@@ -15,15 +15,24 @@ prompt_protheme_precmd() {
 }
 
 prompt_protheme_flag() {
+  local flag=0
+
   # Privileged
-  [[ "${USER}" = "root" ]] && echo -n P || echo -n U
+  [[ "${USER}" = "root" ]] && flag=$((flag + 1))
 
   # Remote connection
-  [[ "${SSH_CONNECTION}" != "" ]] && echo -n R || echo -n L
+  [[ "${SSH_CONNECTION}" != "" ]] && flag=$((flag + 2))
+
+  case ${flag} in
+    0 ) echo "%B%F{green}[UL]%b%f" ;;
+    1 ) echo "%B%F{red}[PL]%b%f" ;;
+    2 ) echo "%B%F{blue}[UR]%b%f" ;;
+    3 ) echo "%B%F{red}[PR]%b%f" ;;
+  esac
 }
 
 prompt_protheme_setup() {
-  autoload -Uz ddd_zsh_hook
+  autoload -Uz add_zsh_hook
   autoload -Uz vcs_info
 
   prompt_opts=(percent subst)
@@ -34,9 +43,9 @@ prompt_protheme_setup() {
   zstyle ':vcs_info:*' formats "%F{white}[%b]%f"
   zstyle ':vcs_info:*' actionformats '%F{white}[%b|%a]%f'
 
-  PROMPT='[$(prompt_protheme_flag)] %~
+  PROMPT='$(prompt_protheme_flag) %F{cyan}%~%f
 %F{red}%(?..[%?] )%f%n@%U%m%u %# '
-  RPROMPT='%B%U${vcs_info_msg_0_}%b%u'
+  RPROMPT='%f%B%U${vcs_info_msg_0_}%b%u'
 }
 
 prompt_protheme_setup "$@"
