@@ -34,6 +34,8 @@ silent which nvim && export EDITOR="${EDITOR:-nvim}"
 silent which vim && export EDITOR="${EDITOR:-vim}"
 silent which vi && export EDITOR="${EDITOR:-vi}"
 
+export PATH="${HOME}/.local/bin:${PATH}"
+
 load_script "${XDG_DATA_HOME}/zinit/zinit.zsh"
 
 zinit light mafredri/zsh-async
