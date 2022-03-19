@@ -28,6 +28,8 @@ export SAVEHIST=262144
 export PATH="${PATH}:${ZSH_ROOT}/bin"
 export FPATH="${FPATH}:${ZSH_ROOT}/functions"
 
+export TERM="xterm-256color"
+
 silent which nvim && export EDITOR="${EDITOR:-nvim}"
 silent which vim && export EDITOR="${EDITOR:-vim}"
 silent which vi && export EDITOR="${EDITOR:-vi}"
