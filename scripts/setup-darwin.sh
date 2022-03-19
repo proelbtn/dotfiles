@@ -32,6 +32,10 @@ symlink() {
 
 cd $(dirname $0)/..
 
+# starship
+mkdir -p ~/.config
+symlink ./starship/starship.toml ~/.config/starship.toml
+silent which starship || brew install starship
 
 # zsh
 [ ! -d "${XDG_DATA_HOME}/zinit" ] && git clone https://github.com/zdharma-continuum/zinit.git "${XDG_DATA_HOME}/zinit" || true

@@ -45,8 +45,7 @@ autoload -Uz compinit
 autoload -Uz promptinit
 autoload -Uz cdtemp
 
-promptinit
-prompt protheme
+eval "$(starship init zsh)"
 
 # ==============================================================================
 

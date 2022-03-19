@@ -25,8 +25,8 @@ expand() {
 }
 
 symlink() {
-  local src=$(expand $1)
-  local dst=$(expand $2)
+  local src="$(expand $1)"
+  local dst="$(expand $2)"
 
   printf "[link] ${dst} -> ${src}\n"
   ln -sf "${src}" "${dst}"
@@ -34,6 +34,14 @@ symlink() {
 
 cd $(dirname $0)/..
 
+# rust
+[ ! -d "${HOME}/.cargo" ] && curl https://sh.rustup.rs -sSf | sh -s -- -y || true
+. "${HOME}/.cargo/env"
+
+# starship
+silent which starship || cargo install starship --locked
+mkdir -p ~/.config
+symlink ./starship/starship.toml ~/.config/starship.toml
 
 # zsh
 [ ! -d "${XDG_DATA_HOME}/zinit" ] \
@@ -42,14 +50,8 @@ cd $(dirname $0)/..
 symlink ./zsh/env.zsh ~/.zshenv
 symlink ./zsh/rc.zsh ~/.zshrc
 
-
 # git
 symlink ./git/gitconfig ~/.gitconfig
-
-
-# rust
-[ ! -d "${HOME}/.cargo" ] && curl https://sh.rustup.rs -sSf | sh -s -- -y || true
-. "${HOME}/.cargo/env"
 
 # cargo
 silent which delta || cargo install git-delta
