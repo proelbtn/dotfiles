@@ -1,8 +1,8 @@
 #!/bin/bash
-export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
-export XDG_CONFIG_DIRS="${XDG_CONFIG_DIRS:-/etc/xdg}"
-export XDG_DATA_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}"
-export XDG_DATA_DIRS="${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
+
+cd "$(dirname $0)"
+source ./common.sh
+source ./zoxide.sh
 
 silent() {
   $@ >/dev/null 2>/dev/null
@@ -67,3 +67,5 @@ silent which bat || cargo install bat
 silent which hexyl || cargo install hexyl
 silent which fd || cargo install fd
 silent which rg || cargo install ripgrep
+
+setup_zoxide
