@@ -2,6 +2,7 @@
 
 cd "$(dirname $0)"
 source ./common.sh
+source ./starship.sh
 source ./zoxide.sh
 
 silent() {
@@ -31,11 +32,6 @@ symlink() {
 }
 
 cd $(dirname $0)/..
-
-# starship
-mkdir -p ~/.config
-symlink ./starship/starship.toml ~/.config/starship.toml
-silent which starship || brew install starship
 
 # zsh
 [ ! -d "${XDG_DATA_HOME}/zinit" ] && git clone https://github.com/zdharma-continuum/zinit.git "${XDG_DATA_HOME}/zinit" || true
@@ -68,4 +64,5 @@ silent which hexyl || cargo install hexyl
 silent which fd || cargo install fd
 silent which rg || cargo install ripgrep
 
+setup_starship
 setup_zoxide

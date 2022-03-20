@@ -2,6 +2,7 @@
 
 cd "$(dirname $0)"
 source ./common.sh
+source ./starship.sh
 source ./zoxide.sh
 
 
@@ -59,3 +60,6 @@ silent which bat || cargo install bat
 silent which hexyl || cargo install hexyl
 silent which fd || cargo install fd
 silent which rg || cargo install ripgrep
+
+setup_starship
+setup_zoxide
