@@ -49,8 +49,6 @@ autoload -Uz compinit
 autoload -Uz promptinit
 autoload -Uz cdtemp
 
-eval "$(starship init zsh)"
-
 # ==============================================================================
 
 # Options
@@ -142,6 +140,9 @@ esac
 
 load_script "${HOME}/.zshrc.local"
 load_script "${ZSH_ROOT}/iterm2.zsh"
+
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
 
 if which zprof >/dev/null 2>/dev/null; then
   zprof

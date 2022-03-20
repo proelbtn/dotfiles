@@ -1,10 +1,10 @@
 #!/bin/bash
 
-cd "$(dirname $0)"
-source ./common.sh
-source ./starship.sh
-source ./zoxide.sh
+cd "$(dirname $0)/.."
 
+source ./scripts/common.sh
+source ./scripts/starship.sh
+source ./scripts/zoxide.sh
 
 silent() {
   $@ >/dev/null 2>/dev/null
@@ -31,8 +31,6 @@ symlink() {
   printf "[link] ${dst} -> ${src}\n"
   ln -sf "${src}" "${dst}"
 }
-
-cd $(dirname $0)/..
 
 # rust
 [ ! -d "${HOME}/.cargo" ] && curl https://sh.rustup.rs -sSf | sh -s -- -y || true
