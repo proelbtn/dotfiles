@@ -15,9 +15,9 @@ read_only_style = "bold red"
 truncation_symbol = ".../"
 
 [username]
-format = "$user"
-style_user = "bold green"
-style_root = "bold red"
+format = "[$user]($style)"
+style_user = "bold blue underline"
+style_root = "bold red underline"
 show_always = true
 
 [hostname]
