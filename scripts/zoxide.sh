@@ -23,6 +23,7 @@ setup_zoxide() {
     tar -C "${TARGET_DIR}" -xv -f zoxide.tar.gz
   fi
 
+  mkdir -p "${HOME}/.local/bin"
   ln -sf "${TARGET_DIR}/zoxide" "${HOME}/.local/bin"
 
   cd "${CURRENT_DIR}"
