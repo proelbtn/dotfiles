@@ -61,7 +61,7 @@ silent which delta || cargo install git-delta
 silent which exa || cargo install exa
 silent which bat || cargo install bat
 silent which hexyl || cargo install hexyl
-silent which fd || cargo install fd
+silent which fd || cargo install fd-find
 silent which rg || cargo install ripgrep
 
 setup_starship
