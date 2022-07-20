@@ -39,6 +39,10 @@ symlink ./zsh/env.zsh ~/.zshenv
 symlink ./zsh/rc.zsh ~/.zshrc
 
 
+# bash
+symlink ./bash/rc.sh ~/.bashrc
+
+
 # rust
 [ ! -d "${HOME}/.cargo" ] && curl https://sh.rustup.rs -sSf | sh -s -- -y || true
 . "${HOME}/.cargo/env"

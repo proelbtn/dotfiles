@@ -43,6 +43,9 @@ symlink() {
 symlink ./zsh/env.zsh ~/.zshenv
 symlink ./zsh/rc.zsh ~/.zshrc
 
+# bash
+symlink ./bash/rc.sh ~/.bashrc
+
 # git
 symlink ./git/gitconfig ~/.gitconfig
 
