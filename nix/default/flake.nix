@@ -32,6 +32,7 @@
 
             nmap
             mtr
+            pueue
 
             ripgrep
 
