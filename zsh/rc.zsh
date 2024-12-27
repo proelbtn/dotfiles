@@ -12,10 +12,7 @@ _check-nix-develop || enter-nix-noreturn default
 
 alias reload="enter-nix-noreturn default"
 
-
 # ==============================================================================
-
-# zshaddhistory
 
 silent() {
   $@ >/dev/null 2>/dev/null
@@ -42,10 +39,7 @@ export PATH="${PATH}:${ZSH_ROOT}/bin"
 export FPATH="${FPATH}:${ZSH_ROOT}/functions"
 
 export TERM="xterm-256color"
-
-silent which nvim && export EDITOR="${EDITOR:-nvim}"
-silent which vim && export EDITOR="${EDITOR:-vim}"
-silent which vi && export EDITOR="${EDITOR:-vi}"
+export EDITOR="${EDITOR:-nvim}"
 
 export PATH="${HOME}/.local/bin:${PATH}"
 
@@ -67,7 +61,6 @@ setopt hist_ignore_space
 setopt hist_reduce_blanks
 
 ## 16.2.6 Input/Output
-setopt correct
 setopt interactive_comments
 unsetopt rm_star_silent
 setopt short_loops
@@ -84,8 +77,6 @@ setopt prompt_sp
 compinit
 zstyle ':completion:*' verbose yes
 zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
-# zstyle ':completion:*:messages' format '%d'
-# zstyle ':completion:*:warning' format 'No matches for: %d'
 
 zstyle ':completion:*:manuals' separate-sections true
 zstyle ':completion:*:descriptions' format '%F{yellow}%B%d%b%f'
@@ -97,22 +88,9 @@ zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 2 numeric
 zstyle ':completion:*:functions' ignored-patterns '_*'
 
-
 # aliases
 
-silent which exa && alias ls="exa"
-silent which bat && alias cat="bat"
-silent which hexyl && alias od="hexyl"
-silent which fd && alias find="fd"
-
 alias ls="ls --color"
-
-
-# alias python="uv run --python 3.13 python"
-# alias python3="uv run --python 3.13 python3"
-# alias pip="uv run --python 3.13 pip"
-# alias pip3="uv run --python 3.13 pip3"
-
 
 # bindkeys
 
@@ -124,15 +102,10 @@ bindkey -r "^[[B"; bindkey "^[[B" down-line-or-search
 
 # binary packages
 
-eval "$(sheldon source)"
-
-source <(fzf --zsh)
-
-# external script loading
-
 load_script "${HOME}/.zshrc.local"
-load_script "${ZSH_ROOT}/iterm2.zsh"
 
+eval "$(sheldon source)"
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
+source <(fzf --zsh)
