@@ -1,39 +1,60 @@
-# For more information, please visit https://starship.rs/guide/
-
 # Schema configuration
 "$schema" = "https://starship.rs/config-schema.json"
 
-# Prompt Configuration:
-# ref: https://starship.rs/ja-JP/config/#%E3%83%95%E3%82%9A%E3%83%AD%E3%83%B3%E3%83%95%E3%82%9A%E3%83%88
-format = """$directory$git_branch$git_commit$git_status
-% """
-right_format = "$golang$python$rust"
+# Color Scheme: https://tailwindcss.com/docs/customizing-colors
+# Slate 500: #64748b
+# Slate 700: #334155
+# Blue 300: #93c5fd
+# Red 300: #fda4af
+# Amber 300: #fcd34d
+
+format = """
+[](fg:#93c5fd)\
+$username\
+$hostname\
+[](fg:prev_bg bg:#334155)\
+$directory\
+$git_branch\
+$git_status\
+[](fg:prev_bg)
+[%](fg:#64748b) """
+
+right_format = """
+[](fg:#fcd34d)\
+$time\
+[](fg:#fcd34d)\
+"""
+
 scan_timeout = 30
-command_timeout = 300
-add_newline = true
+command_timeout = 100
 
-# Directory Configuration:
-# ref: https://starship.rs/ja-JP/config/#directory
+[username]
+style_user = "fg:#334155 bg:#93c5fd"
+style_root = "fg:#334155 bg:#93c5fd"
+format = '[$user]($style)'
+show_always = true
+
+[hostname]
+style = "fg:prev_fg bg:prev_bg"
+format = "[@]($style)[$hostname ]($style bold)"
+ssh_only = false
+
 [directory]
-truncation_length = 8
-format = "[$read_only]($read_only_style)[$path]($style) "
-read_only = "[r/o] "
-style = "fg:bright-yellow"
-read_only_style = "bold red"
+style = "bg:prev_bg"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = '…/'
 
-# Git Branch Configuration:
-# ref: https://starship.rs/ja-JP/config/#git-branch
 [git_branch]
-style = "fg:black"
-format = "[$branch]($style)"
+style = "bg:prev_bg"
+format = '[](fg:prev_fg bg:prev_bg)[ $symbol $branch ]($style)'
+symbol = ""
 
-# Git Commit Configuration:
-# ref: https://starship.rs/ja-JP/config/#git-commit
-[git_commit]
-style = "fg:black"
-only_detached = false
-
-# Git Status Configuration:
-# ref: https://starship.rs/ja-JP/config/#git-status
 [git_status]
-style = "fg:black"
+style = "bg:prev_bg"
+format = '[$all_status$ahead_behind ]($style)'
+
+[time]
+disabled = false
+style = "fg:#334155 bg:#fcd34d"
+format = "[$time]($style)"

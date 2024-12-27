@@ -1,0 +1,10 @@
+# Schema configuration
+"$schema" = "https://starship.rs/config-schema.json"
+
+# Color Scheme: https://tailwindcss.com/docs/customizing-colors
+# Slate 500: #64748b
+
+format = "[%](fg:#64748b) "
+scan_timeout = 30
+command_timeout = 100
+add_newline = false
