@@ -1,5 +1,3 @@
-[[ ${+ZSH_WITH_ZPROF} -eq 1 ]] && zmodload zsh/zprof && zprof
-
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:-${HOME}/.cache}"
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
 export XDG_CONFIG_DIRS="${XDG_CONFIG_DIRS:-/etc/xdg}"

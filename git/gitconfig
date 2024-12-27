@@ -1,24 +1,17 @@
 # vim: ft=gitconfig
 
-[user]
-  email = contact@proelbtn.com
-  name = Ryoga Saito
-  signingkey = 26E938518C44CE23
+[include]
+  path = ~/.gitconfig.local
 
 [help]
   autocorrect = 1
 
-[alias]
-  a = add
-  c = commit
-  d = diff
-  l = log
-  s = status
-  r = rebase
-
 [rebase]
   autoStash = true
   abbreviateCommands = true
+
+[commit]
+  verbose = true
 
 [status]
   short = true
@@ -29,8 +22,6 @@
 
 [pager]
   diff = delta
-  log = delta
-  reflog = delta
   show = delta
 
 [interactive]
@@ -49,8 +40,8 @@
   file-modified-label = [M]
   file-removed-label = [D]
   file-renamed-label = [-]
-  file-style = yellow bold
-  file-decoration-style = yellow bold ul
+  file-style = blue bold
+  file-decoration-style = blue bold ul
 
   line-numbers = true
   line-numbers-left-format = " {nm:>1}│ "
@@ -60,8 +51,8 @@
   line-numbers-minus-style = red bold
   line-numbers-plus-style = green bold
   line-numbers-zero-style = black bold
-  hunk-header-decoration-style = yellow bold ul
   hunk-header-style = white bold file line-number
-  hunk-header-file-style = yellow bold
-  hunk-header-line-number-style = yellow bold
+  hunk-header-decoration-style = blue bold ul
+  hunk-header-file-style = blue bold
+  hunk-header-line-number-style = blue bold
   whitespace-error-style = red red

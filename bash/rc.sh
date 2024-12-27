@@ -51,4 +51,3 @@ load_script "${HOME}/.bashrc.local"
 
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
-

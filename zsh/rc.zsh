@@ -1,6 +1,21 @@
 #!/usr/bin/zsh
 
+export ZSH_ROOT="$(dirname $(readlink ~/.zshrc))"
+
 # ==============================================================================
+
+## nix shell
+source "$ZSH_ROOT/nix.zsh"
+
+# If zsh is not started from `nix develop`, enter default `nix develop` shell.
+_check-nix-develop || enter-nix-noreturn default
+
+alias reload="enter-nix-noreturn default"
+
+
+# ==============================================================================
+
+# zshaddhistory
 
 silent() {
   $@ >/dev/null 2>/dev/null
@@ -19,8 +34,6 @@ load_script() {
 typeset -U PATH
 typeset -U FPATH
 
-export ZSH_ROOT="$(dirname $(readlink ~/.zshrc))"
-
 export HISTFILE=~/.zsh_history
 export HISTSIZE=262144
 export SAVEHIST=262144
@@ -35,13 +48,6 @@ silent which vim && export EDITOR="${EDITOR:-vim}"
 silent which vi && export EDITOR="${EDITOR:-vi}"
 
 export PATH="${HOME}/.local/bin:${PATH}"
-
-load_script "${XDG_DATA_HOME}/zinit/zinit.zsh"
-
-zinit light mafredri/zsh-async
-zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-completions
-zinit light zdharma/fast-syntax-highlighting
 
 stty -ixon -ixoff
 
@@ -94,21 +100,18 @@ zstyle ':completion:*:functions' ignored-patterns '_*'
 
 # aliases
 
-alias reload="exec zsh"
-alias -g foreach="xargs -I {}"
 silent which exa && alias ls="exa"
 silent which bat && alias cat="bat"
 silent which hexyl && alias od="hexyl"
 silent which fd && alias find="fd"
 
-case "$(uname -s)" in
-  Darwin)
-    alias ls="ls -G"
-    ;;
-  Linux)
-    alias ls="ls --color"
-    ;;
-esac
+alias ls="ls --color"
+
+
+# alias python="uv run --python 3.13 python"
+# alias python3="uv run --python 3.13 python3"
+# alias pip="uv run --python 3.13 pip"
+# alias pip3="uv run --python 3.13 pip3"
 
 
 # bindkeys
@@ -121,20 +124,9 @@ bindkey -r "^[[B"; bindkey "^[[B" down-line-or-search
 
 # binary packages
 
-zinit ice as:"program" from:"gh-r" ver:"0.27.2" pick:"fzf"
-zinit light junegunn/fzf
+eval "$(sheldon source)"
 
-case "$(uname -s)" in
-  Darwin)
-    zinit ice as:"program" from:"gh-r" ver:"jq-1.6" cp:"jq-osx-amd64 -> jq" pick:"jq"
-    zinit light stedolan/jq
-    ;;
-  Linux)
-    zinit ice as:"program" from:"gh-r" ver:"jq-1.6" cp:"jq-linux64 -> jq" pick:"jq"
-    zinit light stedolan/jq
-    ;;
-esac
-
+source <(fzf --zsh)
 
 # external script loading
 
@@ -143,7 +135,4 @@ load_script "${ZSH_ROOT}/iterm2.zsh"
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
-
-if which zprof >/dev/null 2>/dev/null; then
-  zprof
-fi
+eval "$(direnv hook zsh)"

@@ -1,29 +1,39 @@
 # For more information, please visit https://starship.rs/guide/
 
-scan_timeout = 20
-command_timeout = 100
+# Schema configuration
+"$schema" = "https://starship.rs/config-schema.json"
+
+# Prompt Configuration:
+# ref: https://starship.rs/ja-JP/config/#%E3%83%95%E3%82%9A%E3%83%AD%E3%83%B3%E3%83%95%E3%82%9A%E3%83%88
+format = """$directory$git_branch$git_commit$git_status
+% """
+right_format = "$golang$python$rust"
+scan_timeout = 30
+command_timeout = 300
 add_newline = true
 
-format = """
-$directory$git_branch$git_commit$git_state$git_metrics$git_status$golang$python$rust
-$status[$username@$hostname](underline) %% 
-"""
-
+# Directory Configuration:
+# ref: https://starship.rs/ja-JP/config/#directory
 [directory]
-style = "bold cyan"
+truncation_length = 8
+format = "[$read_only]($read_only_style)[$path]($style) "
+read_only = "[r/o] "
+style = "fg:bright-yellow"
 read_only_style = "bold red"
-truncation_symbol = ".../"
 
-[username]
-format = "[$user]($style)"
-style_user = "bold blue underline"
-style_root = "bold red underline"
-show_always = true
+# Git Branch Configuration:
+# ref: https://starship.rs/ja-JP/config/#git-branch
+[git_branch]
+style = "fg:black"
+format = "[$branch]($style)"
 
-[hostname]
-format = "$hostname"
-ssh_only = false
+# Git Commit Configuration:
+# ref: https://starship.rs/ja-JP/config/#git-commit
+[git_commit]
+style = "fg:black"
+only_detached = false
 
-[status]
-disabled = false
-format = "[\\($status:$signal_name\\)]($style) "
+# Git Status Configuration:
+# ref: https://starship.rs/ja-JP/config/#git-status
+[git_status]
+style = "fg:black"
