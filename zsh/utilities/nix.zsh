@@ -8,7 +8,7 @@ _check-nix-develop() {
 }
 
 _select-nix-profile() {
-    command ls $nixDir | fzf --min-height=5 --height=10% --border --reverse --prompt="Select nix-shell: "
+    command ls $nixDir | fzf --min-height=10 --height=10% --border --reverse --prompt="Select nix-shell: "
 }
 
 enter-nix() {

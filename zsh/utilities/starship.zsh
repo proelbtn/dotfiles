@@ -8,7 +8,7 @@ export STARSHIP_CONFIG="${starshipDir}/default.toml"
 _select-starship-profile() {
     command ls $starshipDir |
         sed 's/\.toml$//' |
-        fzf --min-height=5 --height=10% --border --reverse --prompt="Select Starship profile: "
+        fzf --min-height=10 --height=10% --border --reverse --prompt="Select Starship profile: "
 }
 
 switch-theme() {
