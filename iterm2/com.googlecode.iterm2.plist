@@ -394,6 +394,10 @@
 	<integer>524288</integer>
 	<key>LeftTabBarWidth</key>
 	<real>151</real>
+	<key>NeverWarnAboutShortLivedSessions_037CB5B3-5965-4112-94AB-5FDCED2B31E6</key>
+	<true/>
+	<key>NeverWarnAboutShortLivedSessions_037CB5B3-5965-4112-94AB-5FDCED2B31E6_selection</key>
+	<integer>0</integer>
 	<key>NeverWarnAboutShortLivedSessions_F1E2C33A-D4EE-4788-8FE5-EC2FBF80711C</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_F1E2C33A-D4EE-4788-8FE5-EC2FBF80711C_selection</key>
