@@ -1,7 +1,7 @@
 #!/bin/sh
 
 local scriptDir="$(dirname $0)"
-local nixDir="$scriptDir/../nix"
+local nixDir="$scriptDir/../../nix"
 
 _check-nix-develop() {
     [[ "$SHELL" =~ "/nix/store*" ]]

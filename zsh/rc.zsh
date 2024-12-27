@@ -2,10 +2,10 @@
 
 export ZSH_ROOT="$(dirname $(readlink ~/.zshrc))"
 
-# ==============================================================================
+source "$ZSH_ROOT/utilities/nix.zsh"
+source "$ZSH_ROOT/utilities/starship.zsh"
 
-## nix shell
-source "$ZSH_ROOT/nix.zsh"
+# ==============================================================================
 
 # If zsh is not started from `nix develop`, enter default `nix develop` shell.
 _check-nix-develop || enter-nix-noreturn default
