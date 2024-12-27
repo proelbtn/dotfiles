@@ -33,9 +33,6 @@
             nmap
             mtr
 
-            google-cloud-sdk
-            awscli2
-
             ripgrep
 
             uv
