@@ -4,7 +4,7 @@ local scriptDir="$(dirname $0)"
 local nixDir="$scriptDir/../../nix"
 
 _check-nix-develop() {
-    [[ "$SHELL" =~ "/nix/store*" ]]
+    [[ "$NIX_DEVELOP" = "true" ]]
 }
 
 _select-nix-profile() {
@@ -26,7 +26,7 @@ enter-nix() {
         profile="$1"
     fi
 
-    nix develop "$nixDir/$profile"
+    NIX_DEVELOP=true nix develop "$nixDir/$profile"
 }
 
 enter-nix-noreturn() {
