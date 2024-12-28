@@ -13,6 +13,7 @@
       {
         devShells.aarch64-darwin.default = pkgs.mkShellNoCC {
           packages = with pkgs; [
+	    httpie
             mtr
             nmap
 	    speedtest-cli
