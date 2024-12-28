@@ -23,6 +23,7 @@
 
             fzf
             jq
+	          go
 
             gh
 
