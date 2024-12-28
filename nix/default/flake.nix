@@ -24,14 +24,10 @@
             fzf
             jq
 
-            tcpdump
-            nmap
             gh
 
             delta
 
-            nmap
-            mtr
             pueue
 
             ripgrep
