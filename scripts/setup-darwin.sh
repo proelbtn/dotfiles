@@ -41,6 +41,9 @@ symlink ./sheldon/plugins.toml ~/.config/sheldon/plugins.toml
 mkdir -p ~/.config
 symlink ./starship/starship.toml ~/.config/starship.toml
 
+mkdir -p ~/.config/nvim
+symlink ./nvim/init.vim ~/.config/nvim/init.vim
+
 # git
 symlink ./git/gitconfig ~/.gitconfig
 if [ ! -f ~/.gitconfig.local ]; then
