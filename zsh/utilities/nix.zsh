@@ -4,7 +4,7 @@ local scriptDir="$(dirname $0)"
 local nixDir="$scriptDir/../../nix"
 
 _check-nix-develop() {
-    [[ "$NIX_DEVELOP" = "true" ]]
+    [[ "$NIX_DEVELOP_TTY" = "$(tty)" ]]
 }
 
 _select-nix-profile() {
@@ -26,7 +26,7 @@ enter-nix() {
         profile="$1"
     fi
 
-    NIX_DEVELOP=true nix develop "$nixDir/$profile"
+    NIX_DEVELOP_TTY="$(tty)" nix develop "$nixDir/$profile"
 }
 
 enter-nix-noreturn() {
