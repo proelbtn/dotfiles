@@ -25,7 +25,7 @@
 
             fzf
             jq
-	          go
+            go
 
             gh
 
@@ -49,7 +49,7 @@
             gnused
             gnutar
             inetutils
-            openssh
+            openssh_gssapi
             unzip
             zip
           ];

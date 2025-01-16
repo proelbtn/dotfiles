@@ -1574,7 +1574,7 @@
 			<key>Transparency</key>
 			<real>0.10000000000000001</real>
 			<key>Unlimited Scrollback</key>
-			<false/>
+			<true/>
 			<key>Use Bold Font</key>
 			<true/>
 			<key>Use Bright Bold</key>
