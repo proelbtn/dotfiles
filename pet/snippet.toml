@@ -1,0 +1,7 @@
+
+[[Snippets]]
+  Description = "Download YouTube movies"
+  Filename = "/Users/proelbtn/.config/pet/snippet.toml"
+  Output = ""
+  Tag = []
+  command = "nix shell nixpkgs#yt-dlp -c yt-dlp <url>"

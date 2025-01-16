@@ -44,6 +44,10 @@ symlink ./starship/starship.toml ~/.config/starship.toml
 mkdir -p ~/.config/nvim
 symlink ./nvim/init.vim ~/.config/nvim/init.vim
 
+mkdir -p ~/.config/pet
+symlink ./pet/config.toml ~/.config/pet/config.toml
+symlink ./pet/snippet.toml ~/.config/pet/snippet.toml
+
 # git
 symlink ./git/gitconfig ~/.gitconfig
 if [ ! -f ~/.gitconfig.local ]; then

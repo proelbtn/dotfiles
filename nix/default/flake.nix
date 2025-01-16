@@ -21,6 +21,8 @@
             zoxide
             direnv
 
+            pet
+
             fzf
             jq
 	          go

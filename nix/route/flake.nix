@@ -14,6 +14,7 @@
         devShells.aarch64-darwin.default = pkgs.mkShellNoCC {
           packages = with pkgs; [
             awscli2
+	    ssm-session-manager-plugin
           ];
 
           shellHook = "exec zsh";
