@@ -25,7 +25,7 @@
 
             fzf
             jq
-	    yq
+            yq
             go
 
             gh
