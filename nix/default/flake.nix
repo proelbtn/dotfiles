@@ -23,11 +23,6 @@
 
             pet
 
-            fzf
-            jq
-            yq
-            go
-
             gh
 
             delta
@@ -36,11 +31,21 @@
 
             ripgrep
 
+            ## Development
+
+            # Golang
+            go
+
+            # Node.js
+            nodejs_22
+
+            # Python
             uv
 
-            wget
-
-            watch
+            # Misc
+            fzf
+            jq
+            yq
 
             # Common utilities installed by default on macOS
             # Here is defined to override the default version
@@ -53,6 +58,8 @@
             openssh_gssapi
             unzip
             zip
+            wget
+            watch
           ];
 
           shellHook = "exec zsh";
