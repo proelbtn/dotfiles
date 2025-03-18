@@ -21,6 +21,8 @@
             zoxide
             direnv
 
+            step-cli
+
             pet
 
             gh
