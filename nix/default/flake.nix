@@ -33,6 +33,9 @@
 
             ripgrep
 
+            hping
+            nmap
+
             ## Development
 
             # Golang
