@@ -38,13 +38,9 @@
 
             ## Development
 
-            # Golang
+            clang
             go
-
-            # Node.js
             nodejs_22
-
-            # Python
             uv
 
             # Misc
