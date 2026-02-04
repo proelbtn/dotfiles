@@ -15,3 +15,4 @@ command_exists starship || brew install starship
 link ./jj/config.toml ~/.config/jj/config.toml
 link ./starship/starship.toml ~/.config/starship.toml
 link ./zsh/.zshrc ~/.zshrc
+link ./zsh/.zshenv ~/.zshenv
