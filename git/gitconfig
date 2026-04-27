@@ -1,0 +1,26 @@
+# vim: ft=gitconfig
+
+[include]
+  path = ~/.gitconfig.local
+
+[init]
+	defaultBranch = main
+
+[help]
+  autocorrect = 1
+
+[rebase]
+  autoStash = true
+  abbreviateCommands = true
+
+[commit]
+  verbose = true
+
+[status]
+  short = true
+  branch = true
+
+[color]
+  ui = true
+[credential]
+	helper = "!f() { /home/vscode/.vscode-server/bin/560a9dba96f961efea7b1612916f89e5d5d4d679/node /tmp/vscode-remote-containers-c0c58f1e-2f83-44a0-b051-8182875fa156.js git-credential-helper $*; }; f"

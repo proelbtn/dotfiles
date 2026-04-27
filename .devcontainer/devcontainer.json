@@ -1,0 +1,29 @@
+{
+  "name": "dotfiles",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+
+  "customizations": {
+    "vscode": {
+      "extensions": []
+    }
+  },
+
+  "runArgs": [
+    "--env-file", "${localWorkspaceFolder}/.env"
+  ],
+
+  // ref: https://containers.dev/features
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "configureZshAsDefaultShell": true,
+      "installOhMyZsh": false,
+      "installZsh": true,
+      "upgradePackages": false
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/node:1": {}
+  },
+
+  // To use developed dotfiles in Dev Container, run the install script after creating the container.
+  "postCreateCommand": ".devcontainer/post-create.sh"
+}

@@ -1,0 +1,10 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "autoupdate": false,
+  "model": "openrouter/moonshotai/kimi-k2.6",
+  "permission": {
+    "edit": "ask",
+    "bash": "ask",
+    "write": "ask"
+  }
+}
