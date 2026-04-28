@@ -11,3 +11,6 @@ export PATH="$GOPATH/bin:$PATH"
 if [ -f ~/.zshenv.local ]; then
     source ~/.zshenv.local
 fi
+
+export OPENCODE_DISABLE_CLAUDE_CODE="1"
+export OPENCODE_ENABLE_EXA="1"

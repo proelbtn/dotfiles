@@ -4,7 +4,6 @@
   "model": "openrouter/moonshotai/kimi-k2.6",
   // ref: https://opencode.ai/docs/permissions/
   "permission": {
-    "edit": "allow",
     "bash": {
       "*": "ask",
       "echo *": "allow",
@@ -15,6 +14,15 @@
       "ls *": "allow",
       "cat *": "allow",
     },
-    "write": "allow"
+    "edit": "allow",
+    "read": "allow",
+    "grep": "allow",
+    "glob": "allow",
+    "lsp": "allow",
+    "skill": "allow",
+    "todowrite": "allow",
+    "webfetch": "allow",
+    "websearch": "allow",
+    "question": "allow",
   }
 }
