@@ -116,8 +116,12 @@ load_script "${ZSH_ROOT}/plugin.zsh"
 
 # ==============================================================================
 
+# Starship prompt
+load_script "${ZSH_ROOT}/starship.zsh"
+
+# ==============================================================================
+
 # Optional tools (uncomment if installed)
-# eval "$(starship init zsh)"
 # eval "$(zoxide init zsh)"
 # eval "$(direnv hook zsh)"
 # source <(fzf --zsh)
