@@ -2,38 +2,114 @@
 
 add_newline = false
 
-# Directory format
 [directory]
-style = "fg:#64748b"
-truncation_length = 3
 truncate_to_repo = true
 
-# Git branch
 [git_branch]
 symbol = " "
-style = "fg:#a78bfa"
-disabled = false
 
-# Git state (staged/unstaged/etc)
+# Disable unnecessary modules for simplicity
 [git_state]
-format = '\[$state\]($style)'
-style = "fg:#f38ba8"
-staged = "+"
-unstaged = "~"
-untracked = "?"
-conflicted = "!"
+disabled = true
 
-# Command status (exit code)
 [status]
-style = "fg:#f38ba8"
-show_success = false
+disabled = true
 
-# Prompt character
 [character]
-success_symbol = "[>](bold fg:#a6e3a1)"
-error_symbol = "[>](bold fg:#f38ba8)"
-disabled = false
+disabled = true
 
-# Timeout settings (keep user's original)
-scan_timeout = 30
-command_timeout = 100
+[time]
+disabled = true
+
+[battery]
+disabled = true
+
+[package]
+disabled = true
+
+[aws]
+disabled = true
+
+[conda]
+disabled = true
+
+[cwd]
+disabled = true  # We use [directory] instead
+
+[dotenv]
+disabled = true
+
+[elixir]
+disabled = true
+
+[elm]
+disabled = true
+
+[erlang]
+disabled = true
+
+[golang]
+disabled = true
+
+[helm]
+disabled = true
+
+[haskell]
+disabled = true
+
+[java]
+disabled = true
+
+[julia]
+disabled = true
+
+[maven]
+disabled = true
+
+[nim]
+disabled = true
+
+[nix_shell]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[ocaml]
+disabled = true
+
+[perl]
+disabled = true
+
+[php]
+disabled = true
+
+[pulumi]
+disabled = true
+
+[python]
+disabled = true
+
+[ruby]
+disabled = true
+
+[rust]
+disabled = true
+
+[swift]
+disabled = true
+
+[terraform]
+disabled = true
+
+[vagrant]
+disabled = true
+
+[vscode]
+disabled = true
+
+[xcode]
+disabled = true
+
+[zig]
+disabled = true
