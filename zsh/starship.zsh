@@ -2,18 +2,14 @@
 # Downloads binary from GitHub Releases if missing
 
 STARSHIP_BIN="${HOME}/.local/bin/starship"
-STARSHIP_VERSION="${STARSHIP_VERSION:-latest}"
 
 ensure_starship() {
   [[ -x "$STARSHIP_BIN" ]] && return 0
 
-  local version="$STARSHIP_VERSION"
-  if [[ "$version" == "latest" ]]; then
-    version=$(curl -fsSL https://api.github.com/repos/starship/starship/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
-    if [[ -z "$version" ]]; then
-      echo "Failed to fetch latest starship version" >&2
-      return 1
-    fi
+  local version=$(curl -fsSL https://api.github.com/repos/starship/starship/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
+  if [[ -z "$version" ]]; then
+    echo "Failed to fetch latest starship version" >&2
+    return 1
   fi
 
   local arch
@@ -52,7 +48,7 @@ ensure_starship() {
   tmpdir=$(mktemp -d)
   trap 'rm -rf "$tmpdir"' EXIT
 
-  echo "Downloading starship ${version} (${arch}-${os})..."
+  echo "Downloading starship ${version} (${target})..."
   if ! curl -fsSL "$url" -o "${tmpdir}/${tarball}"; then
     echo "Failed to download starship from ${url}" >&2
     return 1
