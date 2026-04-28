@@ -6,9 +6,9 @@ add_newline = false
 truncate_to_repo = true
 
 [git_branch]
-symbol = " "
+symbol = ""
 
-# Disable unnecessary modules for simplicity
+# Disable all other modules
 [git_state]
 disabled = true
 
@@ -33,10 +33,7 @@ disabled = true
 [conda]
 disabled = true
 
-[cwd]
-disabled = true  # We use [directory] instead
-
-[dotenv]
+[dotnet]
 disabled = true
 
 [elixir]
@@ -113,3 +110,5 @@ disabled = true
 
 [zig]
 disabled = true
+
+# Remove invalid cwd key
