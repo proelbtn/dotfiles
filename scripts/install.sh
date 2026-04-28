@@ -14,5 +14,6 @@ link ./zsh/.zshrc ~/.zshrc
 link ./zsh/.zshenv ~/.zshenv
 
 mkdir -p ~/.config/opencode
+link ./opencode/AGENTS.md ~/.config/opencode/AGENTS.md
 link ./opencode/opencode.jsonc ~/.config/opencode/opencode.jsonc
 link ./opencode/tui.jsonc ~/.config/opencode/tui.jsonc
