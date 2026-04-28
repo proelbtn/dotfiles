@@ -2,113 +2,12 @@
 
 add_newline = false
 
+format = "$directory$character"
+
 [directory]
 truncate_to_repo = true
-
-[git_branch]
-symbol = ""
-
-# Disable all other modules
-[git_state]
-disabled = true
-
-[status]
-disabled = true
+style = ""
 
 [character]
-disabled = true
-
-[time]
-disabled = true
-
-[battery]
-disabled = true
-
-[package]
-disabled = true
-
-[aws]
-disabled = true
-
-[conda]
-disabled = true
-
-[dotnet]
-disabled = true
-
-[elixir]
-disabled = true
-
-[elm]
-disabled = true
-
-[erlang]
-disabled = true
-
-[golang]
-disabled = true
-
-[helm]
-disabled = true
-
-[haskell]
-disabled = true
-
-[java]
-disabled = true
-
-[julia]
-disabled = true
-
-[maven]
-disabled = true
-
-[nim]
-disabled = true
-
-[nix_shell]
-disabled = true
-
-[nodejs]
-disabled = true
-
-[ocaml]
-disabled = true
-
-[perl]
-disabled = true
-
-[php]
-disabled = true
-
-[pulumi]
-disabled = true
-
-[python]
-disabled = true
-
-[ruby]
-disabled = true
-
-[rust]
-disabled = true
-
-[swift]
-disabled = true
-
-[terraform]
-disabled = true
-
-[vagrant]
-disabled = true
-
-[vscode]
-disabled = true
-
-[xcode]
-disabled = true
-
-[zig]
-disabled = true
-
-# Remove invalid cwd key
+success_symbol = "[\\$](green)"
+error_symbol = "[\\$](red)"
