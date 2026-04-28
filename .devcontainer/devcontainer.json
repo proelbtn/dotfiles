@@ -24,6 +24,11 @@
     "ghcr.io/devcontainers/features/node:1": {}
   },
 
+  // Open port for opencode web
+  "forwardPorts": [
+    4096
+  ],
+
   // To use developed dotfiles in Dev Container, run the install script after creating the container.
   "postCreateCommand": ".devcontainer/post-create.sh"
 }
