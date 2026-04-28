@@ -2,6 +2,38 @@
 
 add_newline = false
 
-format = "[%](fg:#64748b) "
+# Directory format
+[directory]
+style = "fg:#64748b"
+truncation_length = 3
+truncate_to_repo = true
+
+# Git branch
+[git_branch]
+symbol = " "
+style = "fg:#a78bfa"
+disabled = false
+
+# Git state (staged/unstaged/etc)
+[git_state]
+format = '\[$state\]($style)'
+style = "fg:#f38ba8"
+staged = "+"
+unstaged = "~"
+untracked = "?"
+conflicted = "!"
+
+# Command status (exit code)
+[status]
+style = "fg:#f38ba8"
+show_success = false
+
+# Prompt character
+[character]
+success_symbol = "[>](bold fg:#a6e3a1)"
+error_symbol = "[>](bold fg:#f38ba8)"
+disabled = false
+
+# Timeout settings (keep user's original)
 scan_timeout = 30
 command_timeout = 100
