@@ -1,8 +1,3 @@
-silent() {
-  $@ >/dev/null 2>/dev/null
-  return $?
-}
-
 load_script() {
   local script=$1
   if [ -f "$script" ]; then
@@ -11,6 +6,8 @@ load_script() {
 }
 
 # ==============================================================================
+
+export ZSH_ROOT="$(dirname "$(realpath ~/.zshrc)")"
 
 typeset -U PATH
 typeset -U FPATH
@@ -43,11 +40,14 @@ setopt extended_history
 setopt hist_ignore_dups
 setopt hist_ignore_space
 setopt hist_reduce_blanks
+setopt share_history
+setopt inc_append_history
 
 ## 16.2.6 Input/Output
 setopt interactive_comments
 unsetopt rm_star_silent
 setopt short_loops
+setopt no_nomatch
 
 ## 16.2.7 Job Control
 setopt check_jobs
@@ -56,9 +56,23 @@ setopt check_jobs
 setopt prompt_cr
 setopt prompt_sp
 
+## Directory
+setopt auto_cd
+setopt auto_pushd
+setopt pushd_ignore_dups
+
+## Misc
+setopt no_beep
+
 # ==============================================================================
 
-compinit
+# compinit with cache
+if [[ ! -f ~/.zcompdump ]] || [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
+
 zstyle ':completion:*' verbose yes
 zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
 
@@ -72,9 +86,13 @@ zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 2 numeric
 zstyle ':completion:*:functions' ignored-patterns '_*'
 
+# ==============================================================================
+
 # aliases
 
 alias ls="ls --color"
+
+# ==============================================================================
 
 # bindkeys
 
@@ -84,29 +102,22 @@ bindkey -r "^f"; bindkey "^f" forward-word
 bindkey -r "^[[A"; bindkey "^[[A" up-line-or-search
 bindkey -r "^[[B"; bindkey "^[[B" down-line-or-search
 
-# binary packages
+# ==============================================================================
+
+# local config
 
 load_script "${HOME}/.zshrc.local"
 
-# eval "$(sheldon source)"
+# ==============================================================================
+
+# Plugins
+
+load_script "${ZSH_ROOT}/plugin.zsh"
+
+# ==============================================================================
+
+# Optional tools (uncomment if installed)
 # eval "$(starship init zsh)"
 # eval "$(zoxide init zsh)"
 # eval "$(direnv hook zsh)"
 # source <(fzf --zsh)
-
-stty -ixon -ixoff
-
-autoload -Uz compinit
-autoload -Uz promptinit
-autoload -Uz cdtemp
-
-export ZSH_ROOT="$(dirname $(realpath ~/.zshrc))"
-
-# export STARSHIP_CONFIG="${HOME}/.config/starship.toml"
-# eval "$(starship init zsh)"
-
-# export EDITOR="${EDITOR:-nvim}"
-
-# export FPATH="${FPATH}:${ZSH_ROOT}/functions"
-
-load_script ~/.zshrc.local

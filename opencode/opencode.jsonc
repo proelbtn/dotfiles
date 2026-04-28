@@ -4,13 +4,16 @@
   "model": "openrouter/moonshotai/kimi-k2.6",
   // ref: https://opencode.ai/docs/permissions/
   "permission": {
-    "edit": "ask",
+    "edit": "allow",
     "bash": {
       "*": "ask",
       "git commit *": "ask",
       "git *": "allow",
-      "gh *": "allow"
+      "gh *": "allow",
+      "mkdir *": "allow",
+      "ls *": "allow",
+      "cat *": "allow",
     },
-    "write": "ask"
+    "write": "allow"
   }
 }

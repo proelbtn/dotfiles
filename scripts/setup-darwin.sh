@@ -16,5 +16,4 @@ command_exists starship || brew install starship
 link ./git/gitconfig ~/.gitconfig
 link ./git/gitconfig.local ~/.gitconfig.local
 link ./opencode/opencode.jsonc ~/.config/opencode/opencode.jsonc
-link ./sheldon/plugins.toml ~/.config/sheldon/plugins.toml
 link ./starship/starship.toml ~/.config/starship.toml
