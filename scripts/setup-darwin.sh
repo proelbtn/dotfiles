@@ -2,6 +2,10 @@
 
 cd "$(dirname "$0")/.."
 
+copy() {
+    [ -f "$2" ] || cp "$1" "$2"
+}
+
 link() {
     ln -sf "$(realpath $1)" "$2"
 }
@@ -13,7 +17,8 @@ command_exists() {
 command_exists fnm || brew install fnm
 command_exists starship || brew install starship
 
-link ./git/gitconfig ~/.gitconfig
-link ./git/gitconfig.local ~/.gitconfig.local
+copy ./git/gitconfig.conf ~/.gitconfig
+link ./git/gitconfig.common.conf ~/.gitconfig.common
+copy ./git/gitconfig.local.conf ~/.gitconfig.local
 link ./opencode/opencode.jsonc ~/.config/opencode/opencode.jsonc
 link ./starship/starship.toml ~/.config/starship.toml

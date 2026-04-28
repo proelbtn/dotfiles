@@ -4,12 +4,17 @@ set -e
 
 cd "$(dirname "$0")/.."
 
+copy() {
+    [ -f "$2" ] || cp "$1" "$2"
+}
+
 link() {
     ln -sf "$(realpath $1)" "$2"
 }
 
-link ./git/gitconfig ~/.gitconfig
-link ./git/gitconfig.local ~/.gitconfig.local
+copy ./git/gitconfig.conf ~/.gitconfig
+link ./git/gitconfig.common.conf ~/.gitconfig.common
+copy ./git/gitconfig.local.conf ~/.gitconfig.local
 link ./zsh/.zshrc ~/.zshrc
 link ./zsh/.zshenv ~/.zshenv
 
