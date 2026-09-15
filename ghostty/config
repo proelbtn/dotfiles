@@ -1,5 +1,7 @@
 # Ghostty configuration
 
+auto-update-channel = tip
+
 # Use the GitHub Dark color scheme.
 theme = GitHub Dark
 
@@ -19,3 +21,5 @@ mouse-hide-while-typing = true
 
 # Integrate tabs into the macOS title bar.
 macos-titlebar-style = tabs
+
+window-theme = ghostty
