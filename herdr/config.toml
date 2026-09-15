@@ -1,0 +1,41 @@
+onboarding = false
+[ui]
+agent_panel_sort = "spaces"
+prompt_new_tab_name = false
+
+show_agent_labels_on_pane_borders = true
+[ui.toast]
+delivery = "terminal"
+
+[theme]
+name = "one-dark"
+auto_switch = false
+
+[theme.custom]
+active_row_bg = "#21262d"
+selection_bg = "#264f78"
+surface_dim = "#161b22"
+text = "#e6edf3"
+accent = "#58a6ff"
+blue = "#58a6ff"
+green = "#3fb950"
+yellow = "#d29922"
+red = "#f85149"
+mauve = "#bc8cff"
+peach = "#ffa657"
+
+[keys]
+prefix = "ctrl+e"
+new_tab = "prefix+t"
+new_workspace = "prefix+w"
+reload_config = "prefix+shift+r"
+next_tab = ""
+resize_mode = ""
+
+[[keys.command]]
+key = "prefix+r"
+type = "plugin_action"
+command = "persiyanov.reviewr.toggle"
+
+[experimental]
+switch_ascii_input_source_in_prefix = true

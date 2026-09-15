@@ -5,6 +5,11 @@ auto-update-channel = tip
 # Use the GitHub Dark color scheme.
 theme = GitHub Dark
 
+# Use the repository-managed background image.
+background-image = ~/.dotfiles/ghostty/background.jpg
+background-image-opacity = 0.08
+background-image-fit = cover
+
 # Add 24pt of padding around the terminal content.
 window-padding-x = 24
 window-padding-y = 24
