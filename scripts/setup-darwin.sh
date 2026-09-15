@@ -22,3 +22,6 @@ link ./git/gitconfig.common.conf ~/.gitconfig.common
 copy ./git/gitconfig.local.conf ~/.gitconfig.local
 link ./opencode/opencode.jsonc ~/.config/opencode/opencode.jsonc
 link ./starship/starship.toml ~/.config/starship.toml
+
+mkdir -p "$HOME/Library/Application Support/com.mitchellh.ghostty"
+link ./ghostty/config "$HOME/Library/Application Support/com.mitchellh.ghostty/config.ghostty"

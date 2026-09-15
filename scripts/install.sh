@@ -22,3 +22,6 @@ mkdir -p ~/.config/opencode
 link ./opencode/AGENTS.md ~/.config/opencode/AGENTS.md
 link ./opencode/opencode.jsonc ~/.config/opencode/opencode.jsonc
 link ./opencode/tui.jsonc ~/.config/opencode/tui.jsonc
+
+mkdir -p ~/.config/ghostty
+link ./ghostty/config ~/.config/ghostty/config

@@ -1,0 +1,21 @@
+# Ghostty configuration
+
+# Use the GitHub Dark color scheme.
+theme = GitHub Dark
+
+# Add 24pt of padding around the terminal content.
+window-padding-x = 24
+window-padding-y = 24
+window-padding-balance = true
+
+# Disable most ligatures.
+font-feature = -calt, -liga, -dlig
+
+# Reload the configuration with Cmd+R.
+keybind = super+r=reload_config
+
+# Hide the mouse cursor while typing.
+mouse-hide-while-typing = true
+
+# Integrate tabs into the macOS title bar.
+macos-titlebar-style = tabs
