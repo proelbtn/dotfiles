@@ -32,10 +32,16 @@ reload_config = "prefix+shift+r"
 next_tab = ""
 resize_mode = ""
 
+focus_pane_up = ""
 [[keys.command]]
 key = "prefix+r"
 type = "plugin_action"
 command = "persiyanov.reviewr.toggle"
+
+[[keys.command]]
+key = "prefix+k"
+type = "shell"
+command = "\"${HERDR_BIN_PATH:-herdr}\" pane send-keys \"$HERDR_ACTIVE_PANE_ID\" ctrl+l"
 
 [experimental]
 switch_ascii_input_source_in_prefix = true
